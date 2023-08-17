@@ -31,7 +31,7 @@ const Contact = () => {
             Are you a developer wanting to take this project to next level?
             Contribute on the <br />
             <a
-              href="https://github.com/zenith-noble01/MotionGround"
+              href="https://github.com/code-env/motion"
               rel="norefere"
               target="_black"
             >

@@ -51,12 +51,8 @@ function LandingPage() {
 
         <span>
           Made with 🫀 By{" "}
-          <a
-            href="https://github.com/zenith-noble01/"
-            rel="norefere"
-            target="_black"
-          >
-            zenith-noble01
+          <a href="https://skaleway.com" rel="norefere" target="_black">
+            skaleway
           </a>
         </span>
       </motion.footer>
