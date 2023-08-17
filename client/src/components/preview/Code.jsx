@@ -6,6 +6,9 @@ import { directions, types } from "../../constants";
 const Code = ({ mode }) => {
   const [code, setCode] = useState(() => "");
 
+  const { margin, padding } = useSelector((state) => state.customize);
+  const { color } = useSelector((state) => state.bgColor);
+  const { textHex } = useSelector((state) => state.textColor);
   const animateContainer = useSelector(selectAnimateContainer);
   const { annimType, delay, direction, duration, type } = animateContainer;
   const name = useSelector((state) => state.headerName.name);
@@ -34,7 +37,30 @@ const Code = ({ mode }) => {
       return (
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: ${delay / 1000} } }}
+          animate={{ opacity: 1, transition: { duration: ${delay} } }}
+          ${
+            (textHex || margin || padding || color) &&
+            `
+            style={{
+              ${textHex ? `color: "#${textHex}",` : ""}
+              ${
+                padding
+                  ? `padding: "${padding.top}px ${padding.right}px ${padding.bottom}px ${padding.left}px",`
+                  : ""
+              }
+              ${
+                margin
+                  ? `margin: "${margin.top}px ${margin.right}px ${margin.bottom}px ${margin.left}px",`
+                  : ""
+              }
+              ${
+                color
+                  ? `background: "rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})",`
+                  : ""
+              }
+            }}
+    `
+          }
         >
 
           This is a text
@@ -55,7 +81,7 @@ const Code = ({ mode }) => {
           initial={{ scale: 0 }}
           animate={{
             scale: 1,
-            transition: { delay: ${delay / 1000}, duration: ${
+            transition: { delay: ${delay}, duration: ${
         duration / 1000
       }, ease: "easeIn" },
           }}
@@ -100,7 +126,7 @@ const Code = ({ mode }) => {
           animate={{
             opacity: 1,
             ${directionName}: 0,
-            transition: { type: "${type}", delay: ${delay / 1000}, duration: ${
+            transition: { type: "${type}", delay: ${delay}, duration: ${
         duration / 1000
       } },
           }}
@@ -141,7 +167,7 @@ const Code = ({ mode }) => {
           initial={{ ${directionName}: ${directionValue} }}
           animate={{
             ${directionName}: 0,
-            transition: { type: "${type}", delay: ${delay / 1000}, duration: ${
+            transition: { type: "${type}", delay: ${delay}, duration: ${
         duration / 1000
       } },
           }}
