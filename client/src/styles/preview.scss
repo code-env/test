@@ -1,0 +1,87 @@
+@import "./constants";
+@import "./variables";
+
+.playground__preview {
+  width: 55%;
+  position: relative;
+
+  .preview__container {
+    height: 100%;
+    background: rgb(255, 255, 255);
+    padding: 2rem;
+    overflow: auto;
+    @include flexDirection(column);
+    gap: 1rem;
+    padding-bottom: 6rem;
+
+    .preview__header {
+      background: $darkest;
+      width: 80%;
+      margin: 0 auto;
+      padding: 0.5rem;
+      border-radius: 10px;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
+      // left: ;
+
+      .header__container {
+        @include flexAlign;
+        @include flexBetween;
+
+        .header__name {
+          .content {
+            max-width: 200px;
+            height: 20px;
+            overflow: hidden;
+            outline: none;
+            border: 1px solid $darkest;
+            transition: $trans;
+            height: 1.5rem;
+
+            &:focus {
+              border: 1px solid $secondary-color;
+            }
+          }
+        }
+
+        .toggle__container {
+          @include flexAlign;
+          gap: 2rem;
+          button {
+            padding: 0.5rem 1rem;
+            background: $secondary-color;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            transition: $trans;
+            border-radius: 0.5rem;
+            color: $primary-color;
+            @include flexCenter;
+
+            &:hover {
+              background: $secondary-d;
+            }
+
+            svg {
+              font-size: 1.3rem;
+            }
+          }
+
+          .action_ {
+            @include flexAlign;
+            gap: 0.5rem;
+            button.active {
+              background: $secondary-d;
+            }
+          }
+        }
+      }
+    }
+
+    .container {
+      flex: 1;
+      color: $darkest;
+    }
+  }
+}
